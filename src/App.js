@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import Navi from "./Navi";
 import Category from "./Category";
+import ProductList from "./ProductList";
 import { Container, Row, Col } from "reactstrap";
 
 export default class App extends Component {
-  state={currentycategory:""}
+  state={currentcategory:""}
   changecategory=(categories)=>{
-    this.setState({currentycategory:categories.categoryName});
+    this.setState({currentcategory:categories.categoryName});
   }
   render() {
     let basliq = "navi basliq";
@@ -18,11 +19,12 @@ export default class App extends Component {
           <Row>
             <Navi />
             <Col xs="3">
-              <Category currentycategory={this.state.currentycategory} changecategory={this.changecategory} info={categoryinfo} />
+              <Category currentcategory={this.state.currentcategory} changecategory={this.changecategory} info={categoryinfo} />
             </Col>
 
             <Col xs="9">
               <Navi title={basliq} />
+              <ProductList/>
             </Col>
           </Row>
           <Row></Row>
