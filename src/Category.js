@@ -17,11 +17,10 @@ export default class Category extends Component {
     return (
       <div>
         <h3>{this.props.info.basliq2}</h3>
-        <h2>{this.state.categories}</h2>
         <ListGroup>
           {
             this.state.categories.map(category=>(
-              <ListGroupItem onClick={()=>this.props.changecategory(category)} key={category.id}>{category.categorName}</ListGroupItem>
+              <ListGroupItem onClick={()=>this.props.changecategory(category)} key={category.id}>{category.categoryName}</ListGroupItem>
             ))
           }
 
