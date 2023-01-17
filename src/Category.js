@@ -2,18 +2,26 @@ import React, { Component } from "react";
 import {ListGroup,ListGroupItem} from "reactstrap";
 
 export default class Category extends Component {
-    state={categories:[{categoryId:1,categorName:"Kategoriya1"},
-    {categoryId:2,categorName:"Kategoriya2"}]};
+    state={categories:[]};
 
+    componentDidMount(){
+      this.getCategories();
+    }
+
+    getCategories=()=>{
+      fetch("http://localhost:3000/categories")
+      .then(response=>response.json())
+      .then(data=>this.setState({categories:data}));
+    }
   render() {
     return (
       <div>
         <h3>{this.props.info.basliq2}</h3>
-        <h2>{this.state.counter}</h2>
+        <h2>{this.state.categories}</h2>
         <ListGroup>
           {
-            this.state.categories.map(categories=>(
-              <ListGroupItem onClick={()=>this.props.changecategory(categories)} key={categories.categoryId}>{categories.categorName}</ListGroupItem>
+            this.state.categories.map(category=>(
+              <ListGroupItem onClick={()=>this.props.changecategory(category)} key={category.id}>{category.categorName}</ListGroupItem>
             ))
           }
 
