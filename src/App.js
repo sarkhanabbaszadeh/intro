@@ -6,7 +6,7 @@ import { Container, Row, Col } from "reactstrap";
 export default class App extends Component {
   state={currentycategory:""}
   changecategory=(categories)=>{
-    this.setState({currentycategory:categories.categorName})
+    this.setState({currentycategory:categories.categoryName});
   }
   render() {
     let basliq = "navi basliq";

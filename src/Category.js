@@ -25,7 +25,7 @@ export default class Category extends Component {
           }
 
         </ListGroup>
-        <h4>{this.state.currentycategory}</h4>
+        <h4>{this.props.currentycategory}</h4>
       </div>
     );
   }
