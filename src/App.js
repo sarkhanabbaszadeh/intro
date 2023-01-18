@@ -5,9 +5,19 @@ import ProductList from "./ProductList";
 import { Container, Row, Col } from "reactstrap";
 
 export default class App extends Component {
-  state={currentcategory:""}
+  state={currentcategory:"",products:[]}
   changecategory=(categories)=>{
     this.setState({currentcategory:categories.categoryName});
+  };
+
+  componentDidMount(){
+    this.getProducts();
+  };
+
+  getProducts=()=>{
+    fetch("http://localhost:3000/products")
+    .then(response=>response.json())
+    .then(data=>this.setState({products:data}));
   }
   render() {
     let basliq = "navi basliq";
@@ -24,7 +34,9 @@ export default class App extends Component {
 
             <Col xs="9">
               <Navi title={basliq} />
-              <ProductList/>
+              <ProductList
+              products={this.state.products}
+              />
             </Col>
           </Row>
           <Row></Row>
