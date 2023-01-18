@@ -20,7 +20,7 @@ export default class App extends Component {
     if(categorId)
     {
       url+="?categoryId="+categorId;
-      console.log(url);
+      //console.log(url);
     }
     fetch(url)
     .then(response=>response.json())
