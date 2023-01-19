@@ -31,11 +31,11 @@ export default class App extends Component {
     var addItem=newCart.find(c=>c.product.id==product.id); // if have product my cart
     if(addItem)
     {
-      addItem.quentity+=1;
+      addItem.quantity+=1;
     }
     else
     {
-      newCart.push({product:product,quentity:1})
+      newCart.push({product:product,quantity:1})
     }
     this.setState({cart:newCart})
   }
