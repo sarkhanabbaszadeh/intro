@@ -5,7 +5,7 @@ import ProductList from "./ProductList";
 import { Container, Row, Col } from "reactstrap";
 
 export default class App extends Component {
-  state={currentcategory:"",products:[]}
+  state={currentcategory:"",products:[],cart:[]}
   changecategory=(category)=>{
     this.setState({currentcategory:category.categoryName});
     this.getProducts(category.id);
@@ -26,12 +26,25 @@ export default class App extends Component {
     .then(response=>response.json())
     .then(data=>this.setState({products:data}));
   }
+  addToCart=(product)=>{
+    let newCart=this.state.cart;
+    var addItem=newCart.find(c=>c.product.id==product.id); // if have product my cart
+    if(addItem)
+    {
+      addItem.quentity+=1;
+    }
+    else
+    {
+      newCart.push({product:product,quentity:1})
+    }
+    this.setState({cart:newCart})
+  }
   render() {
     let basliq = "navi basliq";
     let categoryinfo = { title: "Category Listler", basliq2: "categry basliqlar" }; // bu best practice encapsulationdur
     return (
       <div>
-                    <Navi />
+                    <Navi cart={this.state.cart} />
         <h3>Helo from React</h3>
         <Container>
           <Row>
@@ -40,7 +53,7 @@ export default class App extends Component {
             </Col>
 
             <Col xs="9">
-              <ProductList currentcategory={this.state.currentcategory}
+              <ProductList currentcategory={this.state.currentcategory} addToCart={this.addToCart}
               products={this.state.products}
               />
             </Col>
