@@ -31,16 +31,15 @@ export default class App extends Component {
     let categoryinfo = { title: "Category Listler", basliq2: "categry basliqlar" }; // bu best practice encapsulationdur
     return (
       <div>
+                    <Navi />
         <h3>Helo from React</h3>
         <Container>
           <Row>
-            <Navi />
             <Col xs="3">
               <Category currentcategory={this.state.currentcategory} changecategory={this.changecategory} info={categoryinfo} />
             </Col>
 
             <Col xs="9">
-              <Navi title={basliq} />
               <ProductList currentcategory={this.state.currentcategory}
               products={this.state.products}
               />
