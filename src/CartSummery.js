@@ -16,7 +16,8 @@ export default class CartSummery extends Component {
                             {
                                 this.props.cart.map(cartItem=>(
                                     <DropdownItem key={cartItem.product.id}>
-                                    {cartItem.product.productName}
+                                      <Badge color='danger' onClick={()=>this.props.removeFromCart(cartItem.product)}>x</Badge>
+                                     {cartItem.product.productName} 
                                     <Badge color='success'> {cartItem.quantity}</Badge>
                                   </DropdownItem>
                                 ))

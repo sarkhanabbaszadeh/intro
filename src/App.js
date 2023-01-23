@@ -39,12 +39,17 @@ export default class App extends Component {
     }
     this.setState({cart:newCart})
   }
+
+  removeFromCart=(product)=>{
+    let newCart=this.state.cart.filter(c=>c.product.id!==product.id)
+    this.setState({cart:newCart})
+  }
   render() {
     let basliq = "navi basliq";
     let categoryinfo = { title: "Category Listler", basliq2: "categry basliqlar" }; // bu best practice encapsulationdur
     return (
       <div>
-                    <Navi cart={this.state.cart} />
+                    <Navi removeFromCart={this.removeFromCart} cart={this.state.cart} />
         <h3>Helo from React</h3>
         <Container>
           <Row>
