@@ -75,7 +75,15 @@ export default class App extends Component {
                     />
                   }
                 />
-                <Route path="/cart" element={<CartList />} />
+                <Route
+                  path="/cart"
+                  element={
+                    <CartList
+                      cart={this.state.cart}
+                      removeFromCart={this.removeFromCart}
+                    />
+                  }
+                />
               </Routes>
             </Col>
           </Row>
