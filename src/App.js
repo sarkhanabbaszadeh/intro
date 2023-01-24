@@ -43,6 +43,7 @@ export default class App extends Component {
   removeFromCart = (product) => {
     let newCart = this.state.cart.filter((c) => c.product.id !== product.id);
     this.setState({ cart: newCart });
+    Alertify.error(product.productName + " Remove from Cart");
   };
   render() {
     let basliq = "navi basliq";
